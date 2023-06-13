@@ -30,7 +30,7 @@ st.set_page_config(
 
 # Função para customização dos botões com css_html_styles, com o arquivo style.css na mesma pasta do projeto
 
-with open('style_st.css') as f:
+with open('style.css') as f:
            st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True) 
            
 
