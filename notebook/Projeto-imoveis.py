@@ -34,8 +34,7 @@ st.set_page_config(
 #            st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)  
 
 with open('style.css') as f:
-    css = f.read()
-st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)         
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)         
 
 # Logo da sidebar 
 
