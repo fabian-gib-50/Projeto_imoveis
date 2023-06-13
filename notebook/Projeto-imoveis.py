@@ -18,7 +18,7 @@ from PIL import Image
 # Modeloso estatíticos com algebra linear 
 from scipy.stats import skew, kurtosis
 # from streamlit_folium import folium_static 
-
+import streamlit.components.v1 as components
 
 # Configurações e parametrizaçõies necessárias para a criaçãio do app.python_streamlit for business 
 
@@ -29,8 +29,10 @@ st.set_page_config(
                   )
 
 # Função para customização dos botões com css_html_styles, com o arquivo style.css na mesma pasta do projeto
+
 with open('style_st.css') as f:
            st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True) 
+           
 
 # Logo da sidebar 
 
@@ -69,7 +71,7 @@ st.markdown(
 
 def cache_data(path):
     data = pd.read_csv(path)
-                   
+                       
 # Aqui o placehoder vazio finalmente é atualizado com dados do filtered_df 
     info_sidebar = st.sidebar.empty()# placeholder, para informações filtradas que só serão carregadas depois
     info_sidebar.info("Registros:\t\t***{}***".format(data.shape[0])) 
@@ -540,8 +542,8 @@ if __name__ == "__main__":
     get_map( data )
     get_graficos( data )
     get_cenarizacoes( data )
-    get_recomendacoes( data )
-
+    get_recomendacoes( data ) 
+    
 # Finalização do projeto, com a função python running do projeto 
 
 def run():
