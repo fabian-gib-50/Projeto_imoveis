@@ -18,7 +18,7 @@ from PIL import Image
 # Modeloso estatíticos com algebra linear 
 from scipy.stats import skew, kurtosis
 # from streamlit_folium import folium_static 
-import streamlit.components.v1 as components
+# import streamlit.components.v1 as components
 
 # Configurações e parametrizaçõies necessárias para a criaçãio do app.python_streamlit for business 
 
@@ -33,9 +33,9 @@ st.set_page_config(
 # with open('style.css') as f:
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)   
 
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# def local_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
       
 
 # Logo da sidebar 
