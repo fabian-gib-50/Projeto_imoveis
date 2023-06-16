@@ -43,7 +43,7 @@ with open(r'.notebook/style.css') as f:
 # )
 
 logo = Image.open(
-                  "notebok/logo_sdb.png"
+                  "/notebok/logo_sdb.png"
                  )
 st.sidebar.image(logo,
 		   caption="",
@@ -51,7 +51,7 @@ st.sidebar.image(logo,
 
 # Carregando a logo e o nome da empresa 
 logo = Image.open(
-                  "notebook/banner_st.png"
+                  "/notebook/banner_st.png"
                  )
 st.image(logo,
 		   caption="",
