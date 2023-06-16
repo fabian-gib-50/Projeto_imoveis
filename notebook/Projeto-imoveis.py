@@ -533,6 +533,7 @@ if __name__ == "__main__":
     path = ('data/kc_house_data.csv')
     data = cache_data( path )
     
+    
 # Parametros de chamada das funções 
     
     data = get_tratamento( data )
@@ -542,12 +543,12 @@ if __name__ == "__main__":
     get_graficos( data )
     get_cenarizacoes( data )
     get_recomendacoes( data ) 
-    
+
 # Finalização do projeto, com a função python running do projeto 
 
 def run():
     if __name__ == '__main__':
-        cache_data.run()    
+        cache_data.run(data)    
     return True     
 
 st.markdown('---')
