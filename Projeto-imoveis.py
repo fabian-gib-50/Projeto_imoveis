@@ -17,8 +17,8 @@ import scipy.stats as stats
 from PIL import Image 
 # Modeloso estatíticos com algebra linear 
 from scipy.stats import skew, kurtosis
-# from streamlit_folium import folium_static 
-# import streamlit.components.v1 as components
+from streamlit_folium import folium_static 
+import streamlit.components.v1 as components
 
 # Configurações e parametrizaçõies necessárias para a criaçãio do app.python_streamlit for business 
 
