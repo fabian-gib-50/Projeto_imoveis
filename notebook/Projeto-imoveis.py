@@ -30,7 +30,7 @@ st.set_page_config(
 
 # Função para customização dos botões com css_html_styles, com o arquivo style.css na mesma pasta do projeto
 
-with open(r'./notebook/style.css') as f:
+with open(r'.notebook/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)      
 
 # Logo da sidebar 
@@ -43,7 +43,7 @@ with open(r'./notebook/style.css') as f:
 # )
 
 logo = Image.open(
-                  "data/img/logo_sdb.png"
+                  "notebok/logo_sdb.png"
                  )
 st.sidebar.image(logo,
 		   caption="",
@@ -51,7 +51,7 @@ st.sidebar.image(logo,
 
 # Carregando a logo e o nome da empresa 
 logo = Image.open(
-                  "data/img/banner_st.png"
+                  "notebook/banner_st.png"
                  )
 st.image(logo,
 		   caption="",
