@@ -68,9 +68,9 @@ st.markdown(
 # Função para ler a base de dados e função nativa do streamlit para limpar chache_resource 
 @st.cache_resource 
 
-def cache_data(path):
-    data = pd.read_csv(path)
-                       
+def cache_data(path_in):
+    data = pd.read_csv(path_in)         
+          
 # Aqui o placehoder vazio finalmente é atualizado com dados do filtered_df 
     info_sidebar = st.sidebar.empty()# placeholder, para informações filtradas que só serão carregadas depois
     info_sidebar.info("Registros:\t\t***{}***".format(data.shape[0])) 
@@ -530,8 +530,8 @@ def get_recomendacoes( data ):
 
 if __name__ == "__main__": 
        
-    path = (r'./kc_house_data.csv')
-    data = cache_data( path )
+    path_in = (r'./base/kc_house_data.csv')
+    data = cache_data( path_in )
     
     
 # Parametros de chamada das funções 
