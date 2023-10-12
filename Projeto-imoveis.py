@@ -43,7 +43,7 @@ with open(r'./style.css') as f:
 # )
 
 logo = Image.open(
-                  "logo_sdb.png"
+                  ".//img//logo_sdb.png"
                  )
 st.sidebar.image(logo,
 		   caption="",
@@ -51,7 +51,7 @@ st.sidebar.image(logo,
 
 # Carregando a logo e o nome da empresa 
 logo = Image.open(
-                  "banner_st.png"
+                  ".//img//banner_st.png"
                  )
 st.image(logo,
 		   caption="",
@@ -263,11 +263,11 @@ def get_metricas(data):
    min_    = pd.DataFrame( attributes.apply( np.min ) )
    max_    = pd.DataFrame( attributes.apply( np.max ) )
    skew    = pd.DataFrame( attributes.apply( lambda x:x.skew ()) ) 
-   kurtos  = pd.DataFrame( attributes.apply( lambda x:x.kurtosis ()) )
+   kurtosis  = pd.DataFrame( attributes.apply( lambda x:x.kurtosis ()) )
   
 # Concatenando o DataFrame criado acima com as análises descritivas 
 
-   dfm = pd.concat([min_, media, max_, mediana, std, skew, kurtos],axis=1).reset_index() # Concate pelo eixo das colunas criando novo index
+   dfm = pd.concat([min_, media, max_, mediana, std, skew, kurtosis],axis=1).reset_index() # Concate pelo eixo das colunas criando novo index
    
    dfm.columns = ['ATRIBUTOS', 'MÍNIMO', 'MÉDIA', 'MÁXIMO', 'MEDIANA', 'DESV.PADRÃO', 'SKEW', 'KURTOSIS'] 
    
