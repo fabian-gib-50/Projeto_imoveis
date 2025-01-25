@@ -1,24 +1,22 @@
 /* codigo css para customizar o streamlit */
 
-.stButton > button:hover { 
-    color: #0414f8;
-    backgroud-color: #a9e6e0;
-    font-family: Arial;
-    font-size: 0.8em;
-    height: 30px;
-    width: 100%; 
-}
-
 .stButton > button { 
-    color: #0659f5;
-    backgroud-color: #0a2df0;
+    backgroud-color: #4500da;
     font-family: Arial;
-    border-color: #051df5;
+    border-color: #fff;
     font-size: 0.8em;
     height: 30px;
     width: 100%; 
 }
 
+.stButton > button:hover { 
+    backgroud-color:#4500da;
+    border-color: #fff;
+    /* font-family: Arial; */
+    font-size: 0.8em;
+    height: 30px;
+    width: 100%; 
+}
 
 /* Removendo a marca dagua made in streamlit da pagina  */ 
 
