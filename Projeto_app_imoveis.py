@@ -62,7 +62,7 @@ st.markdown(
     "<h4 style='text-align: center; color:#2D3142;'>KC HOUSE INCORPORADORA E IMOBILIÁRIA</h4>", 
     unsafe_allow_html=True)
 st.markdown(
-    "<h6 style='text-align: center; color:#03045E;'<em>Imóveis para todos os estilos de vℹ️da <em></h6>", 
+    "<h6 style='text-align: center; color:#03045E;'<em>Imóveis para todos os estilos de vida <em></h6>", 
     unsafe_allow_html=True) 
 
 # Função para ler a base de dados e função nativa do streamlit para limpar chache_resource 
@@ -73,7 +73,7 @@ def cache_data(path_in):
           
 # Aqui o placehoder vazio finalmente é atualizado com dados do filtered_df 
     info_sidebar = st.sidebar.empty()# placeholder, para informações filtradas que só serão carregadas depois
-    info_sidebar.info("Registros:\t\t***{}***".format(data.shape[0])) 
+    info_sidebar.info("Total de Imóveis:\t{}".format(data.shape[0])) 
                  
     return data  
 
@@ -92,8 +92,7 @@ pd.set_option('display.float_format',lambda x: '%.2f' % x)
  # Remoção de dados duplicados 
 def duplicates(data):
     data = data.drop_duplicates(subset=['id'], keep = 'last') 
-    data = data.drop(15870)
-    
+    data = data.drop(15870) # Dropando o imével id 15870 (Excluindo)    
     return data 
 
 # Função para tratamentos em especial datetime 
@@ -193,7 +192,7 @@ def get_attributes_data(data):
     
 # Análise dados que serão trabalhados nas análises 
             
-    if st.sidebar.button('***Clic***\t***Visualizar Dados*** ℹ️', use_container_width=False):
+    if st.sidebar.button('Visualizar Tabela', use_container_width=False):
        st.write(data.head(5))  
        
     st.markdown(
@@ -205,7 +204,7 @@ def get_attributes_data(data):
     descritiva = data[[ 'price', 'preco_m²', 'bedrooms','bathrooms','sqft_living', 
                       'sqft_lot', 'sqft_above', 'sqft_living15', 'sqft_lot15' ]].describe().drop(['count'])
     # st.write(describe)
-    if st.sidebar.button('***Clic***\t***Análise descritiva*** ℹ️', use_container_width=False):
+    if st.sidebar.button('Análise Decritiva', use_container_width=False):
        st.write(descritiva.head(5))  
  
     st.markdown(
@@ -274,7 +273,7 @@ def get_metricas(data):
    # Parâmetros de configuração de colunas quantidade 
 
    st.markdown(
-   "<h6 style='text-align: center; color:#343A40;'>LOCALIZAÇÃO POR ZIPCODE E ANÁLISE ESTATÍSTICA DAS VARIÁVEIS</h6>", 
+   "<h6 style='text-align: center; color:#343A40;'>LOCALIZAÇÃO POR CEP E ANÁLISE ESTATÍSTICA DAS VARIÁVEIS</h6>", 
    unsafe_allow_html=True) 
    col1, col2 = st.columns(( 2 ))
    col1.dataframe( gmd ) 
@@ -306,7 +305,7 @@ def get_map(data):
                         "<h6 style='text-align: center; color:#343A40;'>Selecione Mapa</h6>", 
    unsafe_allow_html=True) 
        
-    if st.sidebar.button('***Clic***\t***Visualizar Mapa*** ℹ️', disabled=False, use_container_width=True) is True:
+    if st.sidebar.button('Visualizar Mapa !', disabled=False, use_container_width=True) is True:
        st.plotly_chart( map )
 
     return None
@@ -334,7 +333,7 @@ def get_graficos( data ):
 # Filtros por ano de construção 
     
     st.sidebar.markdown(
-    "<h4 style='text-align: center; color:darkpurple;'>FILTRO ANO CONSTRUÇÃO ℹ️ </h4>", 
+    "<h4 style='text-align: center; color:darkpurple;'>FILTRO POR ANO DE CONSTRUÇÃO</h4>", 
     unsafe_allow_html=True) 
     f_yr_built = st.sidebar.slider( 'Ano', min_yr_built,
                                            max_yr_built,
@@ -362,7 +361,7 @@ def get_graficos( data ):
     # st.bar_chart(yr_built)
     
     st.markdown(
-    "<h6 style='text-align: center; color:darkpurple;'>CENARIZAÇÃO COM A MÉDIA DOS PREÇOS E QUANTIDADES DE QUARTOS </h6>", 
+    "<h6 style='text-align: center; color:darkpurple;'>CENARIZAÇÃO COM A MÉDIA DOS PREÇOS E QUANTIDADES DE QUARTOS POR IMÓVEL</h6>", 
     unsafe_allow_html=True) 
     
     dfg = (data[['bedrooms', 'price']] ).groupby( 'bedrooms' ).mean().reset_index() 
@@ -375,10 +374,10 @@ def get_graficos( data ):
 def get_cenarizacoes( data ):
 
     st.markdown(
-    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO POR PREÇOS MÉDIOS DOS IMÓVEIS COM VISTA PARA A ÁGUA </h6>", 
+    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO POR PREÇOS MÉDIOS DOS IMÓVEIS COM VISTA PARA A ÁGUA</h6>", 
     unsafe_allow_html=True)
     st.markdown(
-    "<h8 style='text-align: center; color:#343A40;'>Se verdadeiro os imóveis com frente para a água, tem valorização em torno de 30%</h8>", 
+    "<h8 style='text-align: center; color:#343A40;'>Se verdadeiro os imóveis com frente para a água, tem valorização em torno de 30% *maior*</h8>", 
     unsafe_allow_html=True)
 
     df = data[['frente_agua', 'price']].groupby('frente_agua').mean().reset_index()
@@ -424,7 +423,7 @@ def get_cenarizacoes( data ):
 # Valorização dos imóvei ao longo dos anos em termos de crescimento 
 
     st.markdown(
-    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM INDICADOR DE CRESCIMENTO DO IMÓVEIS ANO APÓS ANO</h6>", 
+    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM INDICADOR DE CRESCIMENTO DOS IMÓVEIS ANO APÓS ANO</h6>", 
     unsafe_allow_html=True)
 
     df = data[['ano', 'price']].groupby('ano').mean().reset_index()
@@ -442,7 +441,7 @@ def get_cenarizacoes( data ):
 # Cenarização dos imóveis por ano de reformas
 
     st.markdown(
-    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM ANÁLISE DOS IMÓVEIS POR ANO DE REFORMAS</h6>", 
+    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM ANÁLISE DOS IMÓVEIS POR ANO QUE HOUVE REFORMAS</h6>", 
     unsafe_allow_html=True) 
     
     im3b  = data[(data['bathrooms'] == 3) & (data['yr_renovated'] > 0)]['price'].mean()
@@ -457,7 +456,9 @@ def get_cenarizacoes( data ):
 # Cenarização dos imóveis com maior número de quartos e sua valorização 
     
     st.markdown(
-    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM RECOMENDAÇÕES DE COMPRA E VENDA BASE TABELA</h6>", 
+    "<h6 style='text-align: center; color:#343A40;'>CENARIZAÇÃO COM RECOMENDAÇÕES DE COMPRA E VENDA</h6>", 
+    unsafe_allow_html=True) 
+    st.markdown( "<h6 style='text-align: center; color:#343A40;'>Indicação das melhores opções com base na análise dos dados</h6>",
     unsafe_allow_html=True) 
 
     return None
@@ -518,7 +519,7 @@ def get_recomendacoes( data ):
     df3 = df3[['zipcode', 'lucro_b']].groupby('zipcode').mean().reset_index()
 
     st.markdown(
-    "<h6 style='text-align: center; color:#343A40;'>LUCRO MÉDIO POR LOCALIZAÇÃO DOS IMÓVEIS</h6>", 
+    "<h6 style='text-align: center; color:#343A40;'>LUCRO MÉDIO POR LOCALIZAÇÃO DO CEP DOS IMÓVEIS</h6>", 
     unsafe_allow_html=True)   
     st.dataframe( df3 )
        
