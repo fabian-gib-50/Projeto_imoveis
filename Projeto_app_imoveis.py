@@ -42,9 +42,6 @@ with open(r'./style.css') as f:
 #     initial_sidebar_state="collapsed",
 # )
 
-# logo = Image.open(
-#                   ".//img//logo_sdb.png"
-#                  )
 logo = Image.open(
                   "./img/logo_sdb.png"
                  )
