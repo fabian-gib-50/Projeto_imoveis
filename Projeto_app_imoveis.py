@@ -305,7 +305,7 @@ def get_map(data):
                         "<h6 style='text-align: center; color:#343A40;'>Selecione Mapa</h6>", 
    unsafe_allow_html=True) 
        
-    if st.sidebar.button('Visualizar Mapa !', disabled=False, use_container_width=True) is True:
+    if st.sidebar.button('Abrir Mapa', disabled=False, use_container_width=True) is True:
        st.plotly_chart( map )
 
     return None
