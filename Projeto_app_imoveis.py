@@ -3,12 +3,14 @@
 
 # Import das bibliotecas usadas no projeto de compra e venda de imóveis 
 
+import pathlib 
 # Análise e estatística modelos matemáticos
 import numpy as np
 # Mineracao da base e leituras
 import pandas as pd
 # Desenvolvimento do app web 
 import streamlit as st 
+import streamlit.components.v1 as components
 # Plotagens de gráficos 
 import plotly.express as px 
 # Análise e estatíticas
@@ -18,7 +20,8 @@ from PIL import Image
 # Modeloso estatíticos com algebra linear 
 from scipy.stats import skew, kurtosis
 from streamlit_folium import folium_static 
-import streamlit.components.v1 as components
+
+
 
 # Configurações e parametrizaçõies necessárias para a criaçãio do app.python_streamlit for business 
 
@@ -29,9 +32,14 @@ st.set_page_config(
                   )
 
 # Função para customização dos botões com css_html_styles, com o arquivo style.css na mesma pasta do projeto
-
-with open(r'./style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)      
+def load_css(file_path): 
+    with open(r'./style.css') as fabian:
+         st.markdown(f'<style>{fabian.read()}</style>', unsafe_allow_html=True)   
+    # Carregando o css externo para reenderização do App_streamlit 
+    css_path = pathlib.path(__file__).parents[1] / "assets" / "styles.css"
+    load_css(css_path)
+    return(file_path)#Observação para o css externo.
+ 
 
 # Logo da sidebar 
 
@@ -304,9 +312,11 @@ def get_map(data):
     st.sidebar.markdown( 
                         "<h6 style='text-align: center; color:#343A40;'>Selecione Mapa</h6>", 
    unsafe_allow_html=True) 
-       
-    if st.sidebar.button('Abrir Mapa', disabled=False, use_container_width=True) is True:
-       st.plotly_chart( map )
+    
+    # Button start mapa:          
+    if st.sidebar.button('Abra o Mapa', key=("blue"), 
+                          disabled=False, use_container_width=True) is True:
+       st.plotly_chart(map)
 
     return None
 
@@ -333,7 +343,7 @@ def get_graficos( data ):
 # Filtros por ano de construção 
     
     st.sidebar.markdown(
-    "<h4 style='text-align: center; color:darkpurple;'>FILTRO POR ANO DE CONSTRUÇÃO</h4>", 
+    "<h4 style='text-align: center; color:darkpurple;'>Filtragem por ano de construção</h4>", 
     unsafe_allow_html=True) 
     f_yr_built = st.sidebar.slider( 'Ano', min_yr_built,
                                            max_yr_built,

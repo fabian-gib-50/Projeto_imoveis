@@ -1,4 +1,6 @@
 /* codigo css para customizar o streamlit */
+.st-key-blue button { background-color:blue;
+}
 
 .stButton > button { 
     backgroud-color: #4500da;
@@ -10,7 +12,7 @@
 }
 
 .stButton > button:hover { 
-    backgroud-color:#4500da;
+    backgroud-color:#4500da;      
     border-color: #fff;
     /* font-family: Arial; */
     font-size: 0.8em;
