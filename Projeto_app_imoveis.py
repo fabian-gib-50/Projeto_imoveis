@@ -40,7 +40,6 @@ def load_css(file_path):
     load_css(css_path)
     return(file_path)#Observação para o css externo.
  
-
 # Logo da sidebar 
 
 # st.set_page_config(
@@ -55,7 +54,7 @@ logo = Image.open(
                  )
 st.sidebar.image(logo,
 		           caption="",
-		           use_column_width=True)
+		           use_container_width=True)
 
 # Carregando a logo e o nome da empresa 
 logo = Image.open(
@@ -63,7 +62,7 @@ logo = Image.open(
                  )
 st.image(logo,
 		   caption="",
-		   use_column_width=True) 
+		   use_container_width=True) 
 
 # st.title(':sunglasses:')
 st.markdown(
