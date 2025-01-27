@@ -1,0 +1,82 @@
+/* codigo css para customizar o streamlit */
+
+.st-key-magenta button{
+    background-color:Black;
+}
+
+/* Animação do button  */
+
+.st-key-pulse button{
+    background-color: magenta;
+    border-radius: 10px;
+    padding: 20px 60px;
+    animation: pulse 2s infinite;
+}
+
+.st-key-pulse button p {
+    font-size: 24px;
+    font-family: 'Comic Sans MS',sans-serif;
+}
+
+/* hover - estilo ao passar o mause ou clicar no button */ 
+
+.st-key-pulse button:hover {
+    background-color: blueviolet;
+    border: none;
+}
+
+.st-key-pulse button:hover p {
+    color: white;
+
+}
+
+.st-key-pulse button focus {
+    background-color: blue;
+    border: none;
+}
+
+.st-key-pulse button focus p {
+    color: red;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba (76, 175, 80 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 0 20px rgba (76, 175, 80 0.7);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba (76, 175, 80 0.7);
+    }       
+}
+
+.stButton > button { 
+    backgroud-color: #4500da;
+    font-family: Arial;
+    border-color: #fff;
+    font-size: 0.8em;
+    height: 30px;
+    width: 100%; 
+}
+
+.stButton > button:hover { 
+    backgroud-color:#4500da;      
+    border-color: #fff;
+    /* font-family: Arial; */
+    /* font-size: 0.8em;
+    height: 30px;
+    width: 100%; 
+} */
+
+/* Removendo a marca dagua made in streamlit da pagina  */ 
+
+footer {
+    visibility: hidden;
+}
+
+/* Removenvo da pagina o menu de configurações do streamlit  */
+
+#MainMenu {
+    visibility: hidden;
+}
