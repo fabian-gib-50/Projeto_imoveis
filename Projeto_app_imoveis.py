@@ -22,7 +22,6 @@ from scipy.stats import skew, kurtosis
 from streamlit_folium import folium_static 
 
 
-
 # Configurações e parametrizaçõies necessárias para a criaçãio do app.python_streamlit for business 
 
 # Configurações das imagens de logo e etc... 
@@ -37,10 +36,10 @@ def load_css(file_path):
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-
 # Load the external CSS
 css_path = pathlib.Path("assets/style.css")
 load_css(css_path)
+
 # Logo da sidebar 
 
 # st.set_page_config(
@@ -85,10 +84,11 @@ def cache_data(path_in):
                  
     return data  
 
-st.sidebar.markdown('---')
+# st.sidebar.markdown('---')
 st.sidebar.markdown(
     "<h4 style='text-align: center; color:darkpurple;'>MENU CONSULTAS </h4>", 
     unsafe_allow_html=True) 
+st.sidebar.divider()
      
 st.markdown('---')
 
@@ -195,12 +195,16 @@ def get_attributes_data(data):
     "<h4 style='text-align: center; color:darkpurple;'>FILTROS INTERATIVOS</h4>", 
     unsafe_allow_html=True)  
     
-    st.sidebar.markdown('---') 
+    st.sidebar.divider()
+    # st.sidebar.markdown('---') 
     
     
 # Análise dados que serão trabalhados nas análises 
-            
-    if st.sidebar.button('Visualizar Tabela', use_container_width=False):
+    
+    if st.sidebar.button("Visualizar Tabela",key="Blue", use_container_width=False):    
+       st.sidebar.button("Visualizar Tabela",key="pulse")    
+       
+    # if st.sidebar.button('Visualizar Tabela', key='Blue', use_container_width=False):
        st.write(data.head(5))  
        
     st.markdown(
@@ -212,12 +216,14 @@ def get_attributes_data(data):
     descritiva = data[[ 'price', 'preco_m²', 'bedrooms','bathrooms','sqft_living', 
                       'sqft_lot', 'sqft_above', 'sqft_living15', 'sqft_lot15' ]].describe().drop(['count'])
     # st.write(describe)
-    if st.sidebar.button('Análise Decritiva', use_container_width=False):
+    if st.sidebar.button('Análise Decritiva',use_container_width=False):
        st.write(descritiva.head(5))  
  
     st.markdown(
     "<h6 style='text-align: center; color:#343A40;'> DADOS COM FILTRO POR ATRIBUTOS E LOCALIZAÇÃO </h6>", 
-    unsafe_allow_html=True)      
+    unsafe_allow_html=True)  
+    
+    st.sidebar.divider()    
            
 # Criando lista de atributos para implentar filtros  
 
@@ -288,7 +294,7 @@ def get_metricas(data):
    col2.dataframe( dfm )
      
    return None
-
+   st.sidebar.divider()
 
 # Criando função para gerar um mapa com a localização dos imóveis
 
@@ -310,7 +316,7 @@ def get_map(data):
    unsafe_allow_html=True) 
     
     st.sidebar.markdown( 
-                        "<h6 style='text-align: center; color:#343A40;'>Selecione Mapa</h6>", 
+                        "<h6 style='text-align: center; color:#343A40;'>SELEÇÃO DO MAPA</h6>", 
    unsafe_allow_html=True) 
     
     # Button start mapa:          
@@ -319,6 +325,7 @@ def get_map(data):
        st.plotly_chart(map)
 
     return None
+    st.divider()
 
 # Criando função para plotar gráficos 
 
@@ -462,6 +469,7 @@ def get_cenarizacoes( data ):
     df = {'no_revovated': im3bb, 'yes_renovated': im3b, 'preco_diferente': diferenca}
     df = pd.DataFrame([df])
     st.dataframe( df )
+    st.divider()
     
 # Cenarização dos imóveis com maior número de quartos e sua valorização 
     
@@ -535,7 +543,7 @@ def get_recomendacoes( data ):
        
     return data 
 
-
+    st.divider()
 # Path da base de dados 
 # Importação da base de dados 
 
