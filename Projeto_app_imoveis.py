@@ -32,14 +32,15 @@ st.set_page_config(
                   )
 
 # Função para customização dos botões com css_html_styles, com o arquivo style.css na mesma pasta do projeto
-def load_css(file_path): 
-    with open(r'./style.css') as fabian:
-         st.markdown(f'<style>{fabian.read()}</style>', unsafe_allow_html=True)   
-    # Carregando o css externo para reenderização do App_streamlit 
-    css_path = pathlib.path(__file__).parents[1] / "assets" / "styles.css"
-    load_css(css_path)
-    return(file_path)#Observação para o css externo.
- 
+# Function to load CSS from the 'assets' folder
+def load_css(file_path):
+    with open(file_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+# Load the external CSS
+css_path = pathlib.Path("assets/style.css")
+load_css(css_path)
 # Logo da sidebar 
 
 # st.set_page_config(
