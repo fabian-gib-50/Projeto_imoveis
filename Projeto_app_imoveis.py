@@ -40,6 +40,7 @@ def load_css(file_path):
 css_path = pathlib.Path("assets/style.css")
 load_css(css_path)
 
+
 # Logo da sidebar 
 
 # st.set_page_config(
@@ -204,7 +205,6 @@ def get_attributes_data(data):
     if st.sidebar.button("Visualizar Tabela",key="Blue", use_container_width=False):    
        st.sidebar.button("Visualizar Tabela",key="pulse")    
        
-    # if st.sidebar.button('Visualizar Tabela', key='Blue', use_container_width=False):
        st.write(data.head(5))  
        
     st.markdown(
@@ -217,6 +217,7 @@ def get_attributes_data(data):
                       'sqft_lot', 'sqft_above', 'sqft_living15', 'sqft_lot15' ]].describe().drop(['count'])
     # st.write(describe)
     if st.sidebar.button('Análise Decritiva',use_container_width=False):
+       
        st.write(descritiva.head(5))  
  
     st.markdown(
